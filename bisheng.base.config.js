@@ -15,4 +15,5 @@ module.exports = {
     sitename: 'One',
   },
   root: '/',
+  hash: true,
 };
