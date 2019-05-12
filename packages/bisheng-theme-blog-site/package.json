@@ -1,12 +1,16 @@
 {
   "name": "bisheng-theme-blog-site",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "antd 分格的 markdown 站点",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./lib && shx cp -R src/static/* lib/static",
     "prepublish": "npm run build",
     "postpublish": "shx rm -rf lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swdenglian/blog-site.git"
   },
   "files": [
     "lib"
@@ -75,6 +79,7 @@
   },
   "peerDependencies": {
     "bisheng": "^0.28.3",
+    "bisheng-plugin-description": "^0.1.4",
     "react": "^16.0.0"
   }
 }
