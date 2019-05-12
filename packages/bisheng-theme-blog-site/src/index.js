@@ -1,7 +1,26 @@
 const path = require('path');
 const fs = require('fs');
 const cwd = process.cwd();
-const bishengConfig = require(`${cwd}/bisheng.config.js`);
+const defaultBishengConfigPath = path.resolve(cwd, './bisheng.config.js');
+const processArgv = process.argv;
+
+function getBishengConfigPath() {
+  for (let i = 0; i < processArgv.length; i++) {
+    let item = processArgv[i];
+    let index = i;
+    if (item === '-c' || item === '--config') {
+      let argvConfigPath = processArgv[index + 1];
+      if (argvConfigPath) {
+        return path.resolve(cwd, argvConfigPath);
+      }
+    }
+  }
+
+  return defaultBishengConfigPath;
+}
+
+const bishengConfigPath = getBishengConfigPath();
+const bishengConfig = require(bishengConfigPath);
 
 function getSingleRouterConfig(template, _root) {
   let routeConfig = {};

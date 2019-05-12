@@ -3,7 +3,7 @@ module.exports = {
   source: {
     blog: './blog',
   },
-  theme: './theme',
+  theme: 'bisheng-theme-blog-site',
   lessConfig: {
     javascriptEnabled: true,
   },

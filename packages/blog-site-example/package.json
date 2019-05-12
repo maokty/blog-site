@@ -1,0 +1,25 @@
+{
+  "name": "blog-site-example",
+  "version": "0.1.0",
+  "description": "blog-site-example",
+  "scripts": {
+    "start": "rimraf _site && mkdir _site && cross-env NODE_ENV=development bisheng start -c ./bisheng.dev.config.js",
+    "build": "rimraf build && mkdir build && bisheng build -c ./bisheng.config.js",
+    "preview": "npm run build && http-server ./build"
+  },
+  "keywords": [
+    "bisheng-theme-blog-site"
+  ],
+  "author": "swdenglian",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-import": "^1.11.0",
+    "bisheng": "^1.2.4",
+    "bisheng-theme-blog-site": "^0.1.0",
+    "cross-env": "^5.2.0",
+    "http-server": "^0.11.1"
+  },
+  "dependencies": {
+    
+  }
+}

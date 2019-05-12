@@ -1,28 +1,5 @@
 {
-  "name": "blog-site",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "rimraf _site && mkdir _site && cross-env NODE_ENV=development bisheng start -c ./bisheng.dev.config.js",
-    "build": "rimraf build && mkdir build && bisheng build -c ./bisheng.config.js",
-    "preview": "npm run build && http-server ./build"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-plugin-import": "^1.11.0",
-    "bisheng": "^1.2.4",
-    "bisheng-theme-one": "^0.2.35",
-    "cross-env": "^5.2.0",
-    "http-server": "^0.11.1"
-  },
-  "dependencies": {
-    "antd": "^3.17.0",
-    "docsearch.js": "^2.6.2",
-    "rc-drawer": "^1.8.1",
-    "react": "^16.8.6",
-    "react-document-title": "^2.0.3",
-    "react-github-button": "^0.1.11"
-  }
+	"devDependencies": {
+		"lerna": "^2.11.0"
+	}
 }
