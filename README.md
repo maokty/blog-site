@@ -1,5 +1,5 @@
 ## blog-site
-使用bisheng以及antd创建的个人博客栈点
+bisheng antd 风格的 theme, 目前还存在许多问题，慎用。
 
 ## 快速开始
 [demo工程演示-快速开始](https://swdenglian.github.io/blog-site/blog/quick-start)
