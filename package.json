@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build-example":"lerna run build --scope=blog-site-example",
+    "preview-example":"lerna run preview --scope=blog-site-example"
+  },
 	"devDependencies": {
 		"lerna": "^2.11.0"
 	}

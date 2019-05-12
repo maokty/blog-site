@@ -1,4 +1,5 @@
 module.exports = {
+  port: 8001,
   exclude: /should-be-ignore/,
   source: {
     blog: './blog',
@@ -11,9 +12,9 @@ module.exports = {
     return config;
   },
   themeConfig: {
-    home: '/',
+    home: '/blog-site/',
     sitename: 'One',
   },
-  root: '/',
+  root: '/blog-site/',
   hash: true,
 };

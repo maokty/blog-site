@@ -2,5 +2,5 @@ const bishengConfig = require('./bisheng.base.config');
 
 module.exports = {
   ...bishengConfig,
-  output: "./build"
+  output: "./build/blog-site"
 }
