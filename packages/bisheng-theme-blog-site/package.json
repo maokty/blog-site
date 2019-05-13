@@ -1,6 +1,6 @@
 {
   "name": "bisheng-theme-blog-site",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "antd 分格的 markdown 站点",
   "main": "./lib/index.js",
   "scripts": {
