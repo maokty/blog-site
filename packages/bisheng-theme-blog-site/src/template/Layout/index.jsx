@@ -1,5 +1,7 @@
 import React from 'react';
 import { Row, Col, Menu, Icon } from 'antd';
+import MobileMenu from 'rc-drawer';
+import { enquireScreen } from 'enquire-js';
 import DocumentTitle from 'react-document-title';
 import '../../static/style';
 
@@ -41,8 +43,10 @@ function renderMenu(props) {
   const { pathname } = props.location;
   return (
     <Menu
+      // theme="dark"
       style={{ height: '100%' }}
       defaultSelectedKeys={[pathname]}
+      className="aside-container menu-site"
       defaultOpenKeys={[pathname.substr(0, pathname.lastIndexOf('/'))]}
       mode="inline"
     >
@@ -51,19 +55,54 @@ function renderMenu(props) {
   );
 }
 
-export default (props) => {
-  return (
-    <DocumentTitle title={props.themeConfig.sitename}>
-      <Row className="main-wrapper">
-        <Col span={5} className="main-menu">
-          {renderMenu(props)}
-        </Col>
-        <Col span={19} className="main-container ">
-          <div className="main-article-wrapper markdown">
-            {props.children}
-          </div>
-        </Col>
-      </Row>
-    </DocumentTitle>
-  );
+function RenderDrawer(props) {
+  const { visible, onClose = () => { }, ...otherProps } = props;
+
+  return <MobileMenu
+    iconChild={[<Icon type="menu-unfold" />, <Icon type="menu-fold" />]}
+    key="Mobile-menu"
+    wrapperClassName="drawer-wrapper"
+  >
+    {renderMenu(props)}
+  </MobileMenu>
+}
+
+
+let isMobile = false;
+enquireScreen(b => {
+  isMobile = b;
+});
+
+export default class Layout extends React.PureComponent {
+  state = {
+    isMobile
+  };
+
+  componentDidMount() {
+    enquireScreen(b => {
+      this.setState({
+        isMobile: !!b,
+      });
+    });
+  }
+
+  render() {
+    const { isMobile } = this.state;
+    const props = this.props;
+    return (
+      <DocumentTitle title={props.themeConfig.sitename}>
+        <Row className="main-wrapper">
+          <Col xs={{ span: 0 }} sm={{ span: 5 }} className="main-menu">
+            {isMobile ? null : renderMenu(props)}
+          </Col>
+          <Col xs={{ span: 24 }} sm={{ span: 19 }} className="main-container">
+            {isMobile ? <RenderDrawer {...props} visible={true} onClose={() => { }} /> : null}
+            <div style={isMobile ? { padding: 0 } : {}} className="main-article-wrapper markdown">
+              {props.children}
+            </div>
+          </Col>
+        </Row>
+      </DocumentTitle>
+    );
+  }
 }
